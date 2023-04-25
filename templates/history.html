@@ -1,0 +1,31 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    History
+{% endblock %}
+
+{% block main %}
+    <h1 class="display-6">Transaction History</h1>
+    <table class="table table-striped table-dark table-bordered">
+        <thead>
+          <tr>
+            <th scope="col">Symbol</th>
+            <th scope="col">Price</th>
+            <th scope="col">Shares</th>
+            <th scope="col">Transaction</th>
+            <th scope="col">Date</th>
+          </tr>
+        </thead>
+        <tbody>
+            {% for i in range(history_db | length) %} 
+                <tr>
+                    <td>{{ symbols_db[i] }}</td>
+                    <td>{{ prices_db[i] | usd }}</td>
+                    <td>{{ shares_db[i] }}</td>
+                    <td>{{ transaction_type[i] }}</td>
+                    <td>{{ date[i] }}</td>
+                </tr>
+            {% endfor %} 
+        </tbody>
+      </table>
+{% endblock %}
